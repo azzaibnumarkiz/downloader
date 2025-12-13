@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>TikTok Downloader</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f1f1;
+            padding: 30px;
+            text-align: center;
+        }
+        .box {
+            background: #ffffff;
+            max-width: 500px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 12px;
+            width: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>TikTok Video Downloader</h2>
+    <p>Tempel link video TikTok di bawah</p>
+
+    <input type="text" id="ttUrl" placeholder="https://www.tiktok.com/...">
+    <button onclick="download()">Download</button>
+
+    <p id="info"></p>
+</div>
+
+<script>
+function download() {
+    const url = document.getElementById("ttUrl").value.trim();
+
+    if (!url) {
+        alert("Masukkan link TikTok dulu");
+        return;
+    }
+
+    window.open(
+        "https://snaptik.app/ID?url=" + encodeURIComponent(url),
+        "_blank"
+    );
+}
+</script>
+
+</body>
+</html>
