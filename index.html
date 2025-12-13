@@ -1,43 +1,15 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>TikTok Downloader</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f1f1f1;
-            padding: 30px;
-            text-align: center;
-        }
-        .box {
-            background: #ffffff;
-            max-width: 500px;
-            margin: auto;
-            padding: 25px;
-            border-radius: 10px;
-        }
-        input {
-            width: 100%;
-            padding: 12px;
-            margin-top: 15px;
-        }
-        button {
-            margin-top: 15px;
-            padding: 12px;
-            width: 100%;
-            cursor: pointer;
-        }
-    </style>
-</head>
 <body>
 
 <div class="box">
-    <h2>TikTok Video Downloader</h2>
-    <p>Tempel link video TikTok di bawah</p>
+    <h2>Video Downloader</h2>
+    <p>Pilih platform dan tempel link video</p>
 
-    <input type="text" id="ttUrl" placeholder="https://www.tiktok.com/...">
+    <select id="platform" style="width:100%; padding:12px; margin-top:10px;">
+        <option value="tiktok">TikTok</option>
+        <option value="facebook">Facebook</option>
+    </select>
+
+    <input type="text" id="videoUrl" placeholder="Tempel link video di sini">
     <button onclick="download()">Download</button>
 
     <p id="info"></p>
@@ -45,19 +17,24 @@
 
 <script>
 function download() {
-    const url = document.getElementById("ttUrl").value.trim();
+    const platform = document.getElementById("platform").value;
+    const url = document.getElementById("videoUrl").value.trim();
 
     if (!url) {
-        alert("Masukkan link TikTok dulu");
+        alert("Masukkan link dulu");
         return;
     }
 
-    window.open(
-        "https://snaptik.app/ID?url=" + encodeURIComponent(url),
-        "_blank"
-    );
+    let target = "";
+
+    if (platform === "tiktok") {
+        target = "https://snaptik.app/ID?url=" + encodeURIComponent(url);
+    } else if (platform === "facebook") {
+        target = "https://fdown.net/download.php?URL=" + encodeURIComponent(url);
+    }
+
+    window.open(target, "_blank");
 }
 </script>
 
 </body>
-</html>
