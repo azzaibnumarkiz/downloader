@@ -33,4 +33,100 @@
 
     p {
         font-size: 14px;
-        color: #555
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    select, input {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        font-size: 14px;
+        margin-bottom: 12px;
+        outline: none;
+    }
+
+    select:focus, input:focus {
+        border-color: #2563eb;
+    }
+
+    button {
+        width: 100%;
+        padding: 13px;
+        border-radius: 10px;
+        border: none;
+        background: #2563eb;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #1e40af;
+    }
+
+    .footer {
+        margin-top: 15px;
+        font-size: 12px;
+        color: #888;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Video Downloader</h1>
+    <p>TikTok • Facebook • Instagram • YouTube</p>
+
+    <select id="platform">
+        <option value="tiktok">TikTok</option>
+        <option value="facebook">Facebook</option>
+        <option value="instagram">Instagram</option>
+        <option value="youtube">YouTube</option>
+    </select>
+
+    <input type="text" id="url" placeholder="Tempel link video di sini">
+
+    <button onclick="download()">Download</button>
+
+    <div class="footer">
+        Personal use only
+    </div>
+</div>
+
+<script>
+function download() {
+    const platform = document.getElementById("platform").value;
+    const url = document.getElementById("url").value.trim();
+
+    if (!url) {
+        alert("Masukkan link video dulu");
+        return;
+    }
+
+    let target = "";
+
+    switch(platform) {
+        case "tiktok":
+            target = "https://snaptik.app/ID?url=" + encodeURIComponent(url);
+            break;
+        case "facebook":
+            target = "https://fdown.net/download.php?URL=" + encodeURIComponent(url);
+            break;
+        case "instagram":
+            target = "https://snapinsta.app/?url=" + encodeURIComponent(url);
+            break;
+        case "youtube":
+            target = "https://y2mate.is/search/" + encodeURIComponent(url);
+            break;
+    }
+
+    window.open(target, "_blank");
+}
+</script>
+
+</body>
+</html>
