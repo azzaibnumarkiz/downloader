@@ -1,76 +1,36 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>TikTok Downloader</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f1f1f1;
-            padding: 30px;
-            text-align: center;
-        }
-        .box {
-            background: #ffffff;
-            max-width: 500px;
-            margin: auto;
-            padding: 25px;
-            border-radius: 10px;
-        }
-        input {
-            width: 100%;
-            padding: 12px;
-            margin-top: 15px;
-        }
-        button {
-            margin-top: 15px;
-            padding: 12px;
-            width: 100%;
-            cursor: pointer;
-        }
-    </style>
-</head>
-    
-<body>
+<meta charset="UTF-8">
+<title>Video Downloader</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="box">
-    <h2>Video Downloader</h2>
-    <p>Pilih platform dan tempel link video</p>
-
-    <select id="platform" style="width:100%; padding:12px; margin-top:10px;">
-        <option value="tiktok">TikTok</option>
-        <option value="facebook">Facebook</option>
-    </select>
-
-    <input type="text" id="videoUrl" placeholder="Tempel link video di sini">
-    <button onclick="download()">Download</button>
-
-    <p id="info"></p>
-</div>
-
-<script>
-function download() {
-    const platform = document.getElementById("platform").value;
-    const url = document.getElementById("videoUrl").value.trim();
-
-    if (!url) {
-        alert("Masukkan link dulu");
-        return;
+<style>
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background: linear-gradient(135deg, #111827, #1f2933);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #111;
     }
 
-    let target = "";
-
-    if (platform === "tiktok") {
-        target = "https://snaptik.app/ID?url=" + encodeURIComponent(url);
-    } else if (platform === "facebook") {
-        target = "https://fdown.net/download.php?URL=" + encodeURIComponent(url);
+    .card {
+        background: #ffffff;
+        width: 100%;
+        max-width: 420px;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0,0,0,.25);
+        text-align: center;
     }
 
-    window.open(target, "_blank");
-}
-</script>
+    h1 {
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
 
-</body>
-
-</html>
+    p {
+        font-size: 14px;
+        color: #555
